@@ -1,4 +1,4 @@
-CHAPTER := 07.kernel-init
+CHAPTER := 07.kernel-idt
 MODULES := mbr loader kernel
 
 mbr_SRC := boot/mbr.S
