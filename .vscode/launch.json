@@ -1,0 +1,42 @@
+{
+    // Use IntelliSense to learn about possible attributes.
+    // Hover to view descriptions of existing attributes.
+    // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "kernel-debug (32-bit)",
+            "type": "cppdbg",
+            "request": "launch",
+            "miDebuggerServerAddress": "127.0.0.1:1234",
+            "program": "${workspaceFolder}/build/08.kernel-mm/kernel.bin",
+            "args": [],
+            "stopAtEntry": false,
+            "cwd": "${workspaceFolder}",
+            "environment": [],
+            "externalConsole": false,
+            "logging": {
+                "engineLogging": false
+            },
+            "MIMode": "gdb",
+            "targetArchitecture": "x86", // 强制 32 位
+            "setupCommands": [ 
+                {
+                    "description": "Switch to 32-bit architecture",
+                    "text": "set architecture i386",
+                    "ignoreFailures": false
+                },
+                {
+                    "description": "Load symbols",
+                    "text": "symbol-file ${workspaceFolder}/build/08.kernel-mm/kernel.bin",
+                    "ignoreFailures": false
+                },
+                {
+                    "description": "Disable confirm and pagination",
+                    "text": "set confirm off\nset pagination off",
+                    "ignoreFailures": true
+                }
+            ],
+        }
+    ]
+}

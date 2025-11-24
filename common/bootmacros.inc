@@ -9,7 +9,9 @@
 MBR_BASE_ADDR        equ 0x7C00      ; BIOS加载MBR的物理地址
 LOADER_BASE_ADDR     equ 0x8000      ; 引导程序加载地址
 LOADER_START_SECTOR  equ 1           ; 引导程序起始扇区
-
+E820_BUFFER          equ 0x9000      ; E820 内存映射表缓冲区地址
+E820_SIGNATURE       equ 0x534D4150  ; ASCII "SMAP"
+BOOT_INFO_ADDR       equ 0x0A000     ; 引导信息结构体地址
 ; =================================================================================
 ; 视频内存常量
 ; =================================================================================
@@ -280,7 +282,7 @@ KERNEL_VIRTUAL_ADDR_START       equ   KERNEL_SPACE_START + 0x0800000
 KERNEL_PHYSICAL_ADDR_START      equ   0x200000  ; 2MB
 
 KERNEL_STACK_TOP                equ   0xF0000000
-KERNEL_STACK_PHYSICAL_ADDR      equ   PHY_MEM_SIZE - PAGE_SIZE
+KERNEL_STACK_PHYSICAL_ADDR      equ   PHY_MEM_SIZE - 4 * PAGE_SIZE
 
 ; =================================================================================
 ; ELF 相关
